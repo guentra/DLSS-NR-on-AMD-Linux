@@ -14,9 +14,9 @@ import tempfile
 
 from dlssnr.games import pe_info
 
-RELEASE_SHA = '87dbde90f1249ceb32e06ca4d68c34fd8b5d9d1130fd4ee4560a0eb33079b876'
-PAYLOAD_SHA = 'e350e6137a5bb514f40465bafbd6d5411f2310b4ea9de2590f6229d5f9555212'
-SHADER_SHA = 'cc20edf91b7d8df2e69868809765436c0c975c363760f27f46ff15d7c4d9e58d'
+RELEASE_SHA = 'ebbe7f942e5c87de4928d7e1cbcf2977ea848940b54b4a74fdf158ae63a88d39'
+PAYLOAD_SHA = 'b92f7481bc03fa41f443b1e1e54b502789df2bbbcefe48c680df7bb02a33fc1e'
+SHADER_SHA = '0000000000000000000000000000000000000000000000000000000000000000'
 NO_POLL = '''
 RWByteAddressBuffer flags : register(u0);
 cbuffer C : register(b0) { uint mode; uint value; uint maxIter; uint pad; }
@@ -33,7 +33,7 @@ def sha(data):
 
 def stage(setup):
     if sha(setup) != RELEASE_SHA:
-        raise ValueError('Unverified setup: expected upstream v0.2.12 release SHA256.')
+        raise ValueError('Unverified setup: expected upstream v0.3.2 release SHA256.')
     if setup[-32:-16] != b'DLSSNR-SETUP-01\0':
         raise ValueError('Unrecognized setup footer.')
     size, ini_size = struct.unpack('<QQ', setup[-16:])
@@ -72,7 +72,7 @@ def stage(setup):
                result[s['raw_offset']:s['raw_offset'] + s['raw_size']]]
     if changed != ['.rdata']:
         raise ValueError('Unexpected section modification.')
-    return result, {'mod_version': '0.2.12', 'setup_sha256': RELEASE_SHA,
+    return result, {'mod_version': '0.3.2', 'setup_sha256': RELEASE_SHA,
                     'original_payload_sha256': PAYLOAD_SHA, 'staged_sha256': sha(result),
                     'payload_offset': offset, 'payload_bytes': size,
                     'shader_offset': start, 'shader_bytes': end - start,

@@ -2,11 +2,11 @@
 
 This is an unofficial Linux/Proton adaptation. Publication does not grant a license to third-party components or establish permission for their further redistribution. Third-party rights remain with their respective owners. No NVIDIA/AMD affiliation or endorsement is claimed. The source paths described below refer to the installation archive; the Git tree contains only the installer/wrapper and documentation; tests are not published.
 
-## DLSS-NR on AMD (danielblnc), v0.2.12
+## DLSS-NR on AMD (danielblnc), v0.3.2
 
 Project: https://github.com/danielblnc/DLSS-NR-on-AMD
 
-Release: https://github.com/danielblnc/DLSS-NR-on-AMD/releases/tag/v0.2.12
+Release: https://github.com/danielblnc/DLSS-NR-on-AMD/releases/tag/v0.3.2
 
 The bundled setup SHA256 matches the release digest published by GitHub. `stage_upstream.py` verifies the setup footer, embedded DLL and original shader hashes before applying the existing ordered-interop HLSL adaptation. Only that shader string changes; upstream CPU code and HIP kernels remain intact. The other four binary assets are unchanged local Linux adaptations, not additional upstream downloads. Static checks are not in-game validation.
 
